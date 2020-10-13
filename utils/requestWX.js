@@ -2,20 +2,22 @@ const rp = require('request-promise');
 const axios = require('axios');
 const config = require('../config/constants');
 const logger = require('./log_util');
+// const mtLogger = require('./log_util_mt');
 
 const requestConfig = {
   baseUrl: config.baseUrl,
   resolveWithFullResponse: false
 };
 
-const rpWithLogger = (options, bodyKey) => {
+const rpWithWXLogger = (options, bodyKey) => {
   const startTime = new Date();
   let ms = 0;
   return rp(options).then(
     res => {
       ms = new Date() - startTime;
-      logger.logResponse(res, ms, options[bodyKey]);
-      return res.body;
+      // logger.logResponse(res, ms, options[bodyKey]);
+      // return res.body;
+      return JSON.parse(res); // wx接口返回
     },
     err => {
       ms = new Date() - startTime;
@@ -30,10 +32,10 @@ exports.get = (uri, param = {}, opts) => {
     uri,
     method: 'GET',
     qs: param,
-    ...requestConfig,
+    // ...requestConfig,
     ...opts
   };
-  return rpWithLogger(options, 'param');
+  return rpWithWXLogger(options, 'param');
 };
 
 exports.post = (uri, body, opts) => {
@@ -41,12 +43,12 @@ exports.post = (uri, body, opts) => {
     uri,
     method: 'POST',
     body: body,
-    ...requestConfig,
+    // ...requestConfig,
     ...opts,
     json: true,
     resolveWithFullResponse: true
   };
-  return rpWithLogger(options, 'body');
+  return rpWithWXLogger(options, 'body');
 };
 
 exports.upload = (uri, formData, opts) => {
