@@ -2,7 +2,6 @@ const rp = require('request-promise');
 const axios = require('axios');
 const config = require('../config/constants');
 const logger = require('./log_util');
-// const mtLogger = require('./log_util_mt');
 
 const requestConfig = {
   baseUrl: config.baseUrl,
