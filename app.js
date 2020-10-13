@@ -6,6 +6,7 @@ const static = require('koa-static');
 const json = require('koa-json');
 const koaBody = require('koa-body');
 const logger = require('./utils/log_util');
+const schedule = require('./utils/schedule');
 
 app.use(cors()); // 跨域设置
 // ctx.request.body 解析
@@ -44,5 +45,7 @@ registerRouters('./routes');
 
 app.use(json());
 app.use(static(__dirname + '/public'));
+
+schedule.getWXToken();
 
 module.exports = app;

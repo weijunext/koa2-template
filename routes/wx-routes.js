@@ -11,7 +11,7 @@ const { getNonceStr } = require('../utils/sign');
 router.post('/getJSConfig', async (ctx, next) => {
   try {
     let ticket = '';
-    await redis.get('ticket', (err, result) => {
+    await redis.get('jssdkTicket', (err, result) => {
       ticket = result;
     })
     const timestamp = Date.parse(new Date()) / 1000;

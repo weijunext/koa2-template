@@ -13,7 +13,7 @@ exports.updateWXToken = async () => {
     const opts = {};
     const result = await request(url, params, opts);
     if (result.access_token) {
-      await redis.set('token', result.access_token);
+      await redis.set('jssdkToken', result.access_token);
       updateWXTicket();
     } else {
       console.log('获取token失败', result);
@@ -26,7 +26,7 @@ exports.updateWXToken = async () => {
 const updateWXTicket = async () => {
   try {
     let token = '';
-    await redis.get('token', (err, result) => {
+    await redis.get('jssdkToken', (err, result) => {
       token = result;
     });
     const url = jssdkConfig.getTicketUrl;
@@ -37,7 +37,7 @@ const updateWXTicket = async () => {
     const opts = {};
     const result = await request(url, params, opts);
     if (result.errcode === '0' || result.errcode === 0) {
-      redis.set('ticket', result.ticket);
+      redis.set('jssdkTicket', result.ticket);
     } else {
       console.log('获取ticket失败', result);
     }
