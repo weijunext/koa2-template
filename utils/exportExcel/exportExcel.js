@@ -1,5 +1,3 @@
-const nodeExcel = require('excel-export');
-
-const exportExcel = () => {
-
-};
+/**
+ * 使用文档：https://www.yuque.com/xiebugde/mbz0hg/ede8ir
+ */
