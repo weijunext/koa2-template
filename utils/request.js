@@ -49,18 +49,6 @@ exports.post = (uri, body, opts) => {
   return rpWithLogger(options, 'body');
 };
 
-exports.pac = (uri, body, opts) => {
-  const options = {
-    uri,
-    method: 'POST',
-    body: body,
-    ...opts,
-    json: true,
-    resolveWithFullResponse: true,
-  };
-  return rpWithLogger(options, 'body');
-};
-
 exports.upload = (uri, formData, opts) => {
   const options = {
     uri,
