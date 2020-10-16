@@ -4,7 +4,7 @@
 const router = require('koa-router')();
 const sha1 = require("sha1");
 const redis = require("../utils/redis");
-const jssdkConfig = require('../config/jssdk');
+const jssdkConfig = require('../config/jssdk_config');
 const { getNonceStr } = require('../utils/sign');
 
 // 获取jssdk信息，可用于前端获取jssdk信息，实现分享链接卡片、获取公众号/小程序头像等功能
