@@ -6,6 +6,7 @@ const static = require('koa-static');
 const json = require('koa-json');
 const koaBody = require('koa-body');
 const logger = require('./utils/log_util');
+// const checkToken = require('./utils/token/checkToken'); // 登录需要token时开启
 
 app.use(cors()); // 跨域设置
 // ctx.request.body 解析
@@ -20,6 +21,7 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx);
 });
 
+// app.use(checkToken); // 要写在route前面。登录需要token时开启。
 /* 注册路由 */
 const registerRouters = path => {
   let files = fs.readdirSync(path);
