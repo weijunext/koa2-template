@@ -27,13 +27,12 @@ const rpWithLogger = (options, bodyKey) => {
 
 exports.get = (uri, param = {}, opts) => {
   const options = {
-    uri,
+    uri: requestConfig.baseUrl + uri,
     method: 'GET',
-    qs: param,
-    ...requestConfig,
+    qs: JSON.parse(param),
     ...opts
   };
-  return rpWithLogger(options, 'param');
+  return rpWithLogger(options, 'qs');
 };
 
 exports.post = (uri, body, opts) => {
