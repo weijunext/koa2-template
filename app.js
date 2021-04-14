@@ -12,9 +12,13 @@ app.use(cors()); // 跨域设置
 // ctx.request.body 解析
 app.use(
   koaBody({
-    multipart: true
+    multipart: true,
+    formidable: {
+      maxFileSize: 1024 * 1024 * 1024, // 文件大小限制1GB
+    },
   })
 );
+app.use(json());
 
 // error-handling
 app.on('error', (err, ctx) => {
@@ -43,7 +47,6 @@ const registerRouters = path => {
 };
 registerRouters('./routes');
 
-app.use(json());
 app.use(static(__dirname + '/public'));
 
 schedule.getWXToken();
