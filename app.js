@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const cors = require('koa2-cors'); //跨域处理
+// const cors = require('koa2-cors'); //跨域处理
 const app = new Koa();
 const fs = require('fs');
 const static = require('koa-static');
@@ -8,7 +8,7 @@ const koaBody = require('koa-body');
 const logger = require('./utils/log_util');
 const schedule = require('./utils/schedule');
 
-app.use(cors());
+// app.use(cors());
 app.use(
   koaBody({
     multipart: true,
