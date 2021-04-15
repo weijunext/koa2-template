@@ -8,8 +8,7 @@ const koaBody = require('koa-body');
 const logger = require('./utils/log_util');
 const schedule = require('./utils/schedule');
 
-app.use(cors()); // 跨域设置
-// ctx.request.body 解析
+app.use(cors());
 app.use(
   koaBody({
     multipart: true,
