@@ -30,6 +30,8 @@
 /bin/www  # 服务器端口（默认3306）、https配置（https配置默认注释掉，若关掉注释请自行配置端口）  
 /config   # 服务器、数据库、redis、jssdk配置  
 nw.js     # node注册windows服务配置  
+全局检索“jssdkToken”，替换成自定义的key  
+全局检索“jssdkTicket”，替换成自定义的key  
 
 ## 安装依赖
 
